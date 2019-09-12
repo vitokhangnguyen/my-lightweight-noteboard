@@ -7,6 +7,37 @@
     <title>My Lightweight Noteboard</title>
 </head>
 <body>
-    
+    <h1>My Lightweight Noteboard</h1>
+    <div id="notepad" contenteditable></div>
+    <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
+    <script>
+        const fs = new Filer.FileSystem();
+
+        const displayNote = text => {
+            let notepad = document.getElementById("notepad");
+            let noteContent = document.createTextNode(text);
+            notepad.appendChild(noteContent);
+        }
+
+        const getNote = _ => {
+            return document.getElementById("notepad").textContent;
+        }
+
+        window.addEventListener('DOMContentLoaded', e => {
+            fs.readFile('/note', 'utf8', (err, data) => {
+                if (err) {
+                    displayNote("Welcome to my noteboard!");
+                }
+                if (data) {
+                    displayNote(data);
+                }
+            });
+
+            window.setInterval(_ => {
+                let currentNote = getNote();
+                fs.writeFile("/note", currentNote, err => console.log("Error when write file: " + err));
+            }, 2500);
+        });
+    </script>
 </body>
 </html>
