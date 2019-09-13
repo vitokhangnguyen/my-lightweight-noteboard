@@ -6,18 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
+        #main {
+            background-color: bisque;
+            margin-top: 1.5vh;
+            height: 73vh;
+        }
+
         .save {
+            border-width: 2px;
+            border-color: white !important;
             margin-top: 0.5em;
         }
         
         .delete {
+            border-width: 2px;
+            border-color: white !important;
             margin-top: 0.5em;
             margin-left: 0.5em;
         }
 
+        .header {
+            background-color: darksalmon;
+            width: 100%;
+            height: 10em;
+        }
+
         #title {
+            color: darkred;
+            font-weight: bold;
             margin-top: 0.5em;
             margin-bottom: 0.5em;
+            height: 20px;
+            line-height: 20px;
+            padding: 25px;        
         }
 
         .notepad {
@@ -31,7 +52,15 @@
             padding: 0 0.15cm;
         }
 
+        #copyright {
+            color: darkred;
+        }
+
         .noteContent {
+            color: white;
+            outline: none !important;
+            border: 2px solid white;
+            padding: 1px 5px;
             background-color: transparent;
             height: 67%;
             width: 95%;
@@ -44,10 +73,17 @@
     <title>My Lightweight Noteboard</title>
 </head>
 <body>
-    <div id="main" class="text-center container-fluid">
-        <h1 id="title">My Lightweight Noteboard</h1>
-        <button id="add" class="btn btn-primary">Add New Note</button>
+    <div class="text-center container-fluid">
+        <div class="header text-center">
+            <h1 id="title">My Lightweight Noteboard</h1>
+            <p id="copyright">&COPY; 2019, Khang Nguyen</p>
+            <div class="notearea">
+                <button id="add" class="btn btn-primary">Add New Note</button>
+            </div>
+        </div>
+        <div id="main"></div>
     </div>
+
 
     <!-- Page ends here -->
     <script src="https://unpkg.com/filer/dist/filer.min.js"></script>
@@ -175,7 +211,8 @@
                                         stop: function(e, ui) {
                                             fs.writeFile("/note/" + note.id + "/top", note.style.top);
                                             fs.writeFile("/note/" + note.id + "/left", note.style.left);
-                                        }
+                                        },
+                                        containment: "parent"
                                     });
                                 });
                             });
@@ -191,8 +228,8 @@
                     fs.mkdir("/note", err => {
                         fs.mkdir("/note/" + newNote.id, err => {
                             fs.writeFile("/note/" + newNote.id + "/color", newNote.style.backgroundColor);
-                            fs.writeFile("/note/" + newNote.id + "/top", "120px");
-                            fs.writeFile("/note/" + newNote.id + "/left", "25px");
+                            fs.writeFile("/note/" + newNote.id + "/top", "125px");
+                            fs.writeFile("/note/" + newNote.id + "/left", "50px");
                             fs.writeFile("/note/" + newNote.id + "/content", "Welcome!");
                         });
                     });
@@ -201,7 +238,8 @@
                         stop: function(e, ui) {
                             fs.writeFile("/note/" + newNote.id + "/top", newNote.style.top);
                             fs.writeFile("/note/" + newNote.id + "/left", newNote.style.left);
-                        }
+                        },
+                        containment: "parent"
                     });
                 });      
             });      
