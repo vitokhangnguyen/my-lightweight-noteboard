@@ -1,0 +1,74 @@
+#main {
+    background-color: bisque;
+    margin: 1.5vh 0;
+    height: 100vh;
+}
+
+.save {
+    border-width: 2px;
+    border-color: white !important;
+    margin-top: 0.5em;
+}
+
+.delete {
+    border-width: 2px;
+    border-color: white !important;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
+.header {
+    background-color: darksalmon;
+    width: 100%;
+    height: 10em;
+}
+
+.footer {
+    background-color: darksalmon;
+    width: 100%;
+    height: 3em;
+    margin-bottom: 1.5vh;
+    padding-left: 10px;
+    color: darkred;
+    line-height: 20px;
+    padding: 12px;
+}
+
+#title {
+    color: darkred;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    height: 20px;
+    line-height: 20px;
+    padding: 25px;        
+}
+
+.notepad {
+    position: absolute;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 0.5cm;
+    width: 5cm;
+    height: 5cm;
+    padding: 0 0.15cm;
+}
+
+#desc {
+    color: darkred;
+}
+
+.noteContent {
+    color: white;
+    outline: none !important;
+    border: 2px solid white;
+    padding: 1px 5px;
+    background-color: transparent;
+    height: 67%;
+    width: 95%;
+    margin-top: 0.5em;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
