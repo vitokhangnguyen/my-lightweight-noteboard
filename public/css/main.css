@@ -4,6 +4,11 @@
     height: 100vh;
 }
 
+#intro {
+    padding-top: 2em;
+    
+}
+
 #add {
     height: 2.25em;
     width: 25%;
