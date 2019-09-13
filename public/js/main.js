@@ -47,6 +47,14 @@ const getNewNote = noteId => {
 
     saveBtn.addEventListener("click", e => {
         fs.writeFile("/note/" + newNote.id + "/content", contentElem.value);
+        saveBtn.className = "save btn btn-success";
+    });
+
+    contentElem.addEventListener("keyup", e => {
+        if (contentElem.value != "Welcome!")
+            saveBtn.className = "save btn btn-warning";
+        else
+            saveBtn.className = "save btn btn-success";
     });
 
     return newNote;
@@ -90,7 +98,17 @@ const getOldNote = (id, color, top, left, content) => {
 
     saveBtn.addEventListener("click", e => {
         fs.writeFile("/note/" + note.id + "/content", contentElem.value);
+        saveBtn.className = "save btn btn-success";
     });
+
+    let oldContent = contentElem.value;
+    contentElem.addEventListener("keyup", e => {
+        if (oldContent != contentElem.value)
+            saveBtn.className = "save btn btn-warning";
+        else
+            saveBtn.className = "save btn btn-success";
+    });
+
     return note;
 }
 
